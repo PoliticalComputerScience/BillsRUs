@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './Bill.dart';
+import './BillPage.dart';
 
 class CardWidget extends StatelessWidget {
   final Bill bill;
@@ -20,6 +21,10 @@ class CardWidget extends StatelessWidget {
           splashColor: Colors.teal,
           onTap: () {
             print("TAPPPED!!!!!!!!");
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => new BillPage(bill: bill)),
+            );
           },
           child: Padding(
             padding: EdgeInsets.all(6.0),
