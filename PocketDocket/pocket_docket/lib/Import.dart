@@ -4,6 +4,7 @@ import './CardWidget.dart';
 import './TileWidget.dart';
 
 class Import {
+    final List<Color> colors = [Colors.deepPurple[400], Colors.deepPurple[500], Colors.deepPurple[600], Colors.deepPurple[700], Colors.deepPurple[800]];
     final List<Bill> bills = [
     Bill(title: "Title", description: "here is the description of the bill", date: "12/10/2018", category: "Education", tags: <String>["school", "education", "common core"]),
     Bill(title: "Title", description: "here is the description of the bill", date: "12/10/2018", category: "Education", tags: <String>["school", "education", "common core"]),
@@ -18,9 +19,11 @@ class Import {
     final List<Widget> cards = new List<CardWidget>();
     final List<Widget> tiles = new List<TileWidget>();
     void loadBills() {
+      int count = 0;
         for (Bill i in bills) {
-            cards.add(new CardWidget(bill: i));
-            tiles.add(new TileWidget(bill: i));
+            count++;
+            cards.add(new CardWidget(bill: i, color: colors[count % colors.length]));
+            tiles.add(new TileWidget(bill: i, color: colors[count % colors.length]));
         }
     }
 }

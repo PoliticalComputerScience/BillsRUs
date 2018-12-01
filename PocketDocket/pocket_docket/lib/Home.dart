@@ -22,33 +22,40 @@ class _HomeState extends State<Home> {
     }
     return new Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.deepPurple[900],
           title: Text("PocketDocket")
         ),
         drawer: Drawer(
-          child: ListView(
-            padding: EdgeInsets.zero,
-            children: <Widget>[
-              DrawerHeader(
-                child: Text("Pocket Docket"),
-                decoration: BoxDecoration(
-                  color: Colors.lightBlueAccent,
-                ),
+          child: DefaultTextStyle(
+            style: new TextStyle(inherit:true, color: Colors.white),
+            child: Container(
+              color: Colors.deepPurple,
+              child: ListView(
+                padding: EdgeInsets.zero,
+                children: <Widget>[
+                  DrawerHeader(
+                    child: Text("Pocket Docket", style: new TextStyle(color: Colors.white, fontSize: 40.0),),
+                    decoration: BoxDecoration(
+                      color: Colors.deepPurpleAccent,
+                    ),
+                  ),
+                  ListTile(
+                    title: Text('Home', style: new TextStyle(color: Colors.white, fontSize: 24.0)),
+                    onTap : () {
+                      setState(() {bodyState = new ListView(children: imported.cards, padding: EdgeInsets.all(0.0));});
+                      Navigator.of(context).pop();
+                    }
+                  ),
+                  ListTile(
+                    title: Text("Categories", style: new TextStyle(color: Colors.white, fontSize: 24.0)),
+                    onTap : () {
+                      setState(() {bodyState = new GridView.count(crossAxisCount: 2, children: imported.tiles);});
+                      Navigator.of(context).pop();
+                    }
+                  )
+                ]
               ),
-              ListTile(
-                title: Text('Home'),
-                onTap : () {
-                  setState(() {bodyState = new ListView(children: imported.cards, padding: EdgeInsets.all(0.0));});
-                  Navigator.of(context).pop();
-                }
-              ),
-              ListTile(
-                title: Text("Categories"),
-                onTap : () {
-                  setState(() {bodyState = new GridView.count(crossAxisCount: 2, children: imported.tiles);});
-                  Navigator.of(context).pop();
-                }
-              )
-            ]
+            ),
           )
         ),
         body: bodyState

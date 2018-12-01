@@ -4,9 +4,11 @@ import './BillPage.dart';
 
 class CardWidget extends StatelessWidget {
   final Bill bill;
+  final Color color;
 
   const CardWidget({
     this.bill,
+    this.color,
   });
 
   @override
@@ -27,13 +29,17 @@ class CardWidget extends StatelessWidget {
           },
           child: Container(
               child: Card(
+                shape: new Border.all(color: Colors.transparent),
                 margin: EdgeInsets.all(0.0),
-                  color: Colors.lightBlueAccent,
-                  child: ListTile(
-                      leading: Text("leading"),
-                      title: Text(bill.title),
-                      subtitle: Text(bill.category),
-                      trailing: Text(bill.date),
+                  color: color,
+                  child: DefaultTextStyle(
+                    style: new TextStyle(inherit: true, color: Colors.white),
+                    child: ListTile(
+                        //leading: Text("leading"),
+                        title: Text(bill.title, style: new TextStyle(color: Colors.white, fontSize: 24.0),),
+                        subtitle: Text(bill.category, style: new TextStyle(color: Colors.white)),
+                        trailing: Text("Vote: " + bill.date),
+                    ),
                   ),
               ),
             )
