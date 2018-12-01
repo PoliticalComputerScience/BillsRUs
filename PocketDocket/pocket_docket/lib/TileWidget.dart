@@ -11,12 +11,8 @@ class TileWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
         color: Colors.transparent,
-        child: Padding(
-          padding: const EdgeInsets.all(4.0),
-          child: Container(
-            decoration: new BoxDecoration(
-                color: Colors.tealAccent,
-                borderRadius: BorderRadius.all(Radius.circular(30.0))),
+        child: Container(
+          color: Colors.tealAccent,
             child: InkWell(
                 borderRadius: BorderRadius.circular(75.0),
                 highlightColor: Colors.cyan,
@@ -35,6 +31,6 @@ class TileWidget extends StatelessWidget {
                   footer: Center(child: Text("footer \n")),
                 )),
           ),
-        ));
+        );
   }
 }

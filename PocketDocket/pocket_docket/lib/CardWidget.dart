@@ -16,7 +16,6 @@ class CardWidget extends StatelessWidget {
       child: Container(
         height: 125.0,
         child: InkWell(
-          borderRadius: BorderRadius.circular(75.0),
           highlightColor: Colors.cyan,
           splashColor: Colors.teal,
           onTap: () {
@@ -26,19 +25,19 @@ class CardWidget extends StatelessWidget {
               MaterialPageRoute(builder: (context) => new BillPage(bill: bill)),
             );
           },
-          child: Padding(
-            padding: EdgeInsets.all(6.0),
-            child: Card(
-                color: Colors.tealAccent,
-                child: ListTile(
-                    leading: Text("leading"),
-                    title: Text(bill.title),
-                    subtitle: Text(bill.category),
-                    trailing: Text(bill.date),
-                ),
+          child: Container(
+              child: Card(
+                margin: EdgeInsets.all(0.0),
+                  color: Colors.lightBlueAccent,
+                  child: ListTile(
+                      leading: Text("leading"),
+                      title: Text(bill.title),
+                      subtitle: Text(bill.category),
+                      trailing: Text(bill.date),
+                  ),
+              ),
             )
           ),
-        )
         )
       );
   }
