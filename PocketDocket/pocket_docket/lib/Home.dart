@@ -29,14 +29,20 @@ class _HomeState extends State<Home> {
           child: DefaultTextStyle(
             style: new TextStyle(inherit:true, color: Colors.white),
             child: Container(
-              color: Colors.deepPurple,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [Colors.deepPurple, Colors.deepPurpleAccent]
+                )
+              ),
               child: ListView(
                 padding: EdgeInsets.zero,
                 children: <Widget>[
                   DrawerHeader(
-                    child: Text("Pocket Docket", style: new TextStyle(color: Colors.white, fontSize: 40.0),),
+                    child: Text("Pocket Docket", style: new TextStyle(color: Colors.white, fontSize: 35.0),),
                     decoration: BoxDecoration(
-                      color: Colors.deepPurpleAccent,
+                      color: Colors.transparent
                     ),
                   ),
                   ListTile(
