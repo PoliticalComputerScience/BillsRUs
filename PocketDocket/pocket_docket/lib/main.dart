@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import './CardWidget.dart';
-import './TileWidget.dart';
-import './Bill.dart';
 import './Home.dart';
-import './BillPage.dart';
 
 void main() => runApp(new PocketDocket());
 
