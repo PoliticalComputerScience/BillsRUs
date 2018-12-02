@@ -23,16 +23,34 @@ class BillPage extends StatelessWidget {
                 style: new TextStyle(
                     inherit: true, color: Colors.white, fontSize: 18.0),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(bill.title, style: new TextStyle(fontSize: 24.0), textAlign: TextAlign.center,),
                     Padding(padding: EdgeInsets.only(top: 5.0),),
                     Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Text("Category: " + bill.category),
-                          Text(bill.date)
-                        ]),
+                      children: <Widget>[
+                        Flexible(
+                          child: Text("Category: ", style: new TextStyle(fontSize: 22.0),),
+                        ),
+                        Flexible(
+                          child: Center(
+                            child: Text(bill.category,
+                                   maxLines: 2,
+                                   overflow: TextOverflow.ellipsis,
+                                   softWrap: false,
+                                  textAlign: TextAlign.left,),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Flexible(
+                            child: Text("Date: ", style: new TextStyle(fontSize: 22.0),)),
+                        Flexible(
+                            child: Center(child: Text(bill.date, textAlign: TextAlign.left))),
+                      ],
+                    ),
                   ],
                 ),
               ),

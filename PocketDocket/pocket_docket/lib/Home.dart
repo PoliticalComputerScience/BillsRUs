@@ -5,18 +5,21 @@ import './TileWidget.dart';
 import './Import.dart';
 
 class Home extends StatefulWidget{
+  Import imported;
   @override
-  _HomeState createState() => new _HomeState();
+  Home({this.imported});
+  _HomeState createState() => new _HomeState(imported:imported);
 }
 
 class _HomeState extends State<Home> {
-  Import imported = new Import();
+  Import imported;
   Widget bodyState;
   @override
+  _HomeState({this.imported});
   Widget build(BuildContext context) {
-    imported.loadBills();
     if (bodyState == null) {
       setState(() {
+        print("null bodyState");
         bodyState = new ListView(children: imported.cards, padding: EdgeInsets.all(0.0),);
       });
     }

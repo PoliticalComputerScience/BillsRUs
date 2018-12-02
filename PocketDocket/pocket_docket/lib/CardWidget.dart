@@ -49,9 +49,15 @@ class CardWidget extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           Text(bill.category,
-                              style: new TextStyle(color: Colors.white)),
-                          Text("Vote: " + bill.date,
-                              style: new TextStyle(color: Colors.white)),
+                              style: new TextStyle(color: Colors.white),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              softWrap: false,),
+                          Text(bill.date,
+                              style: new TextStyle(color: Colors.white),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              softWrap: false,)
                         ],
                       ),
                       //trailing:
