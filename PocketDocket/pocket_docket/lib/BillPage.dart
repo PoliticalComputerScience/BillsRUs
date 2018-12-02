@@ -23,8 +23,10 @@ class BillPage extends StatelessWidget {
                 style: new TextStyle(
                     inherit: true, color: Colors.white, fontSize: 18.0),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    Text(bill.title, style: new TextStyle(fontSize: 28.0),),
+                    Text(bill.title, style: new TextStyle(fontSize: 24.0), textAlign: TextAlign.center,),
+                    Padding(padding: EdgeInsets.only(top: 5.0),),
                     Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
@@ -35,9 +37,18 @@ class BillPage extends StatelessWidget {
                 ),
               ),
             ),
-            Padding(
+            Padding(padding: EdgeInsets.only(top: 5.0),),
+            Container(
               padding: const EdgeInsets.only(top: 8.0),
-              child: Text(bill.description, style: new TextStyle(color: Colors.white, fontSize: 14.0),),
+              color: Colors.deepPurple[600],
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text("Description:", style: new TextStyle(color: Colors.white, fontSize: 18.0)),
+                  Padding(padding: EdgeInsets.only(top: 5.0),),
+                  Text(bill.description, style: new TextStyle(color: Colors.white, fontSize: 14.0),),
+                ],
+              ),
             ),
           ]),
         ));
