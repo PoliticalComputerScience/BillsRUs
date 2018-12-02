@@ -9,13 +9,11 @@ class PocketDocket extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Import imported = new Import();
-    imported.getBills();
     return new MaterialApp(
-      title: 'PocketDocket',
-      theme: new ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: new Home(imported: imported)
-    );
+        title: 'PocketDocket',
+        theme: new ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: new Home(imported: imported));
   }
 }

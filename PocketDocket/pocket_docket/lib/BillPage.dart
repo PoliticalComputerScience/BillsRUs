@@ -18,6 +18,7 @@ class BillPage extends StatelessWidget {
           color: Colors.deepPurple[600],
           child: Column(children: <Widget>[
             Container(
+              padding: EdgeInsets.only(left:10.0, right:10.0),
               color: Colors.deepPurple[700],
               child: DefaultTextStyle(
                 style: new TextStyle(
@@ -30,25 +31,21 @@ class BillPage extends StatelessWidget {
                     Row(
                       children: <Widget>[
                         Flexible(
-                          child: Text("Category: ", style: new TextStyle(fontSize: 22.0),),
+                          child: Text("Category: ", style: new TextStyle(fontSize: 20.0),),
                         ),
-                        Flexible(
-                          child: Center(
-                            child: Text(bill.category,
-                                   maxLines: 2,
+                        Text(bill.category,
+                                   maxLines: 1,
                                    overflow: TextOverflow.ellipsis,
                                    softWrap: false,
                                   textAlign: TextAlign.left,),
-                          ),
-                        ),
                       ],
                     ),
                     Row(
                       children: <Widget>[
                         Flexible(
-                            child: Text("Date: ", style: new TextStyle(fontSize: 22.0),)),
-                        Flexible(
-                            child: Center(child: Text(bill.date, textAlign: TextAlign.left))),
+                            child: Text("Date: ", style: new TextStyle(fontSize: 20.0),)),
+                        Padding(padding: EdgeInsets.all(19.0)),
+                        Text(bill.date, textAlign: TextAlign.left, style: new TextStyle(fontSize: 18.0)),
                       ],
                     ),
                   ],

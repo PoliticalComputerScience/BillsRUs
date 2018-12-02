@@ -12,15 +12,36 @@ class Home extends StatefulWidget{
 }
 
 class _HomeState extends State<Home> {
+  bool first = true;
   Import imported;
   Widget bodyState;
-  @override
+  final List<Color> colors = [Colors.deepPurple[200], Colors.deepPurple[300], Colors.deepPurple[500], Colors.deepPurple[600], Colors.deepPurple[700]];
+  List<Bill> bills;
+  //List<Widget> cards;
+
+
   _HomeState({this.imported});
-  Widget build(BuildContext context) {
-    if (bodyState == null) {
+
+  @override
+  void initState() {
+    super.initState();
+    Future<List<Bill>> load = imported.getBills();
+    load.then((List<Bill> value) {
+      print(value);
+      print("loaded data in!");
       setState(() {
-        print("null bodyState");
-        bodyState = new ListView(children: imported.cards, padding: EdgeInsets.all(0.0),);
+        bills = value;
+        imported.loadBills(bills);
+      });
+    });
+  }
+  @override
+  Widget build(BuildContext context) {
+    if (first) {
+      setState(() {
+        print("first run");
+        //bodyState = new ListView(children: imported.cards, padding: EdgeInsets.all(0.0),);
+        first = false;
       });
     }
     return new Scaffold(

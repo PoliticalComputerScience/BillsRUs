@@ -8,28 +8,28 @@ import 'package:firebase/firebase_io.dart';
 import 'dart:async';
 
 class Import {
-    final List<Color> colors = [Colors.deepPurple[400], Colors.deepPurple[500], Colors.deepPurple[600], Colors.deepPurple[700], Colors.deepPurple[800]];
+    final List<Color> colors = [Colors.deepPurple[300], Colors.deepPurple[500], Colors.deepPurple[600], Colors.deepPurple[700], Colors.deepPurple[600], Colors.deepPurple[500]];
     final List<Bill> bills = new List<Bill>();
     //bills.add(Bill(title: "Regarding consent to assemble outside the seat of government.", description: "Authorizes the Speaker of the House and the Majority Leader of the Senate, or their respective designees, to notify the Members of the House and the Senate, respectively, to assemble at a place outside the District of Columbia whenever, in their opinion, the public interest shall warrant it.", date: "12/10/2018", category: "Congress", tags: <String>["Congress", "Operations", "Organization"]))
     final List<Widget> cards = new List<CardWidget>();
     final List<Widget> tiles = new List<TileWidget>();
 
-    void loadBills() {
-      print(bills.length);
-      print(bills.length);
+    void loadBills(List<Bill> billList) {
+      print(billList.length);
+      print(billList.length);
       int count = 0;
-        for (Bill i in bills) {
+        for (Bill i in billList) {
             count++;
             cards.add(new CardWidget(bill: i, color: colors[count % colors.length]));
             tiles.add(new TileWidget(bill: i, color: colors[count % colors.length]));
         }
     }
-    Future<Bill> getBills() async {
+    Future<List<Bill>> getBills() async {
       String titleURL = 'https://pocketdocket-db.firebaseio.com/bill1/official_title.json';
       String descriptionURL = 'https://pocketdocket-db.firebaseio.com/bill1/summary/text.json';
       String dateURL = 'https://pocketdocket-db.firebaseio.com/bill1/introduced_at.json';
       String categoryURL = 'https://pocketdocket-db.firebaseio.com/bill1/subjects_top_term.json';
-      String tagsURL = 'https://pocketdocket-db.firebaseio.com/bill1/subject.json';
+      String tagsURL = 'https://pocketdocket-db.firebaseio.com/bill1/subjects.json';
       for(int i = 0; i < 8; i++) {
         var fbClient = FirebaseClient.anonymous(); // FirebaseClient.anonymous() is also available
         // GET
@@ -55,7 +55,8 @@ class Import {
         categoryURL = next(categoryURL);
         tagsURL = next(tagsURL);
       }
-        loadBills();
+        //loadBills();
+      return bills;
     }
     String next(String url) {
       String prev = url[43];
